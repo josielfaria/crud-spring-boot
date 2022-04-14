@@ -2,6 +2,8 @@ package com.api.crudspringboot.services;
 
 import com.api.crudspringboot.models.UserModel;
 import com.api.crudspringboot.repositories.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,8 +29,8 @@ public class UserService {
         return userRepository.existsByUsername(username);
     }
 
-    public List<UserModel> findAll() {
-        return userRepository.findAll();
+    public Page<UserModel> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 
     public Optional<UserModel> findById(UUID id) {
