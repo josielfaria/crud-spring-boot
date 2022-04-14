@@ -54,7 +54,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userModel));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Object> updateUser(@PathVariable(value = "id") UUID id, @RequestBody @Valid UserDto userDto) {
         Optional<UserModel> userModelOptional = userService.findById(id);
 
